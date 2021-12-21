@@ -16,7 +16,7 @@ export const SpeedSlider = ({minSpeed, maxSpeed, defaultSpeed, width, handleSpee
     return (
         <Stack sx={{
             backgroundColor: speedSliderColor,
-            marginTop: 1,
+            marginBottom: 1,
             color: "white"
         }}>
             <Stack>
