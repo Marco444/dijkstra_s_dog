@@ -18,19 +18,17 @@ export function initializeGrid(columns: number, rows: number, start: Point, end:
     grid[start.row][start.col] = new NodeBackEnd(NodeType.Start, start.row, start.col)
     grid[end.row][end.col] = new NodeBackEnd(NodeType.End, end.row, end.col)
 
-    //new ImageAnimation(NodeType.Start, grid[start.row][start.col]).apply()
-
     return grid;
 }
 
-export function updateGrid(oldGrid: NodeBackEnd[][], columns: number, rows: number, start: Point, end: Point) {
+export function updateGrid(oldGrid: readonly NodeBackEnd[][], columns: number, rows: number, start: Point, end: Point) {
     const grid = []
 
     for (let row = 0; row < rows; row++) {
         const currentRow = [];
         for (let col = 0; col < columns; col++) {
-            if(oldGrid[row][col].isWall)
-                currentRow.push(new NodeBackEnd(NodeType.Wall, row, col).toggle());
+           if(oldGrid[row][col].isWall)
+               currentRow.push(new NodeBackEnd(NodeType.Wall, row, col));
            else
                currentRow.push(new NodeBackEnd(NodeType.Empty, row, col));
         }
@@ -67,7 +65,7 @@ export function clearGrid(oldGrid: NodeBackEnd[][], columns: number, rows: numbe
 
 }
 
-export function removeStartCoordinate(grid: NodeBackEnd[][], start: Point) {
+export function removeStartEndCoordinate(grid: NodeBackEnd[][], start: Point) {
     const newGrid = grid.slice()
     newGrid[start.row][start.col] = new NodeBackEnd(NodeType.Empty, start.row, start.col)
     return newGrid
@@ -137,6 +135,6 @@ export function getAllAdjacent(current: NodeBackEnd, grid: NodeBackEnd[][]): Nod
     return nodes
 }
 
-function validCoordinate(row: number, col: number, grid: NodeBackEnd[][]): boolean {
+export function validCoordinate(row: number, col: number, grid: NodeBackEnd[][]): boolean {
     return !(row >= grid.length || row < 0 || col >= grid[0].length || col < 0)
 }

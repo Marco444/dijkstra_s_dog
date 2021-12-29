@@ -13,24 +13,22 @@ export function getBfsAnimations(grid: NodeBackEnd[][], start: NodeBackEnd, end:
 
     while(queue.length !== 0) {
 
-        let current = queue.shift()
+        let current: NodeBackEnd | undefined = queue.shift()
+        if(current === undefined) return []
 
-        // @ts-ignore
         animations.push(new Animation(AnimationType.ReachedNode, current))
 
-        // @ts-ignore
-        for(const vertex: NodeBackEnd of getAdjacent(current, grid)) {
+
+        for(const vertex of getAdjacent(current, grid)) {
            if(!vertex.isVisited && !vertex.isWall){
                queue.push(vertex)
                vertex.isVisited = true
-
-               // @ts-ignore
                vertex.previous = current
            }
+
            if(vertex === end)
                return animations.concat(new Animation(AnimationType.ReachedNode, vertex)).concat(...getShortestPathAnimation(end))
         }
-
 
     }
 

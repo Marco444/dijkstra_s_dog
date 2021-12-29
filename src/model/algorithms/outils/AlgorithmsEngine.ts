@@ -4,6 +4,7 @@ import {NodeBackEnd, Point} from "../../grid/NodeEngine";
 import {getAstarAnimations} from "../A*";
 import {getBfsAnimations} from "../BFS";
 import {getDfsAnimations} from "../DFS";
+import {getBidirectionalBFSAnimations} from "../BiderectionalBfs";
 
 type getAnimationType = (grid: NodeBackEnd[][], startNode: NodeBackEnd, endNode: NodeBackEnd) => Animation[]
 
@@ -13,14 +14,30 @@ const dijkstraText =
      the distance through it to each unvisited neighbor, and updates the 
      neighbor's distance if smaller. It repeats this until it finds the end-node.
     Its complexity varies upon the way we store the closest nodes, being the best one
-    O(lgV*V + E) where V are the vertices and E the edges.
+    O(lgV*V + E) where V are the vertices and E the edges. It works with WEIGHTED graphs
     `
 
 const AstarText = ``
 
-const BfsText = ``
+const BfsText =
+`
+    Breadth First Search (BFS) is set to initialise at a vertex and then moves on to traverse all the nodes
+    with the current height before traversing all the others with next depth level. Because in the worst case
+    it traverses the whole graph, its complexity is O(V + E) where V are the vertices and E are the edges 
+    of the graph. It works with UN-WEIGHTED graphs
+`
 
-const DfsText = ``
+const DfsText =
+`
+    Depth First Search (DFS) works analogously to BFS but traverses in order of the deepest vertex possible at every
+    step, before reaching it and backtracking. Like BFS it works with UN-WEIGHTED graphs, and traverses the whole
+    graph in worst case so its complexity is O(V + E). Contrary to BFS, it DOESN'T GUARANTEE shortest path
+`
+
+const BidirectionalBFSText =
+`
+        
+`
 
 export class Algorithm {
 
@@ -28,6 +45,7 @@ export class Algorithm {
     static Astar = new Algorithm(getAstarAnimations, "A*", AstarText)
     static Bfs = new Algorithm(getBfsAnimations, "BFS", BfsText)
     static Dfs = new Algorithm(getDfsAnimations, "DFS", DfsText)
+    static BidirectionalBFS = new Algorithm(getBidirectionalBFSAnimations, "BFS*", BidirectionalBFSText)
 
     public readonly getAnimations: getAnimationType
     public readonly name: string

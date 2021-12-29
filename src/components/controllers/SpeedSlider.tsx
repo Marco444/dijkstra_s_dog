@@ -21,20 +21,21 @@ export const SpeedSlider = ({minSpeed, maxSpeed, defaultSpeed, width, handleSpee
         }}>
             <Stack>
                 <Typography id="animation-slider" sx={{
-                    paddingTop: 2,
+                    paddingTop: 1,
                     paddingLeft: 2,
                     marginRight: 2,
                     fontWeight: 'bold',
                     display: 'flex',
                     alignItems: 'center',
                     flexWrap: 'wrap',
+                    fontSize: 14
                 }}> Animation Speed
-                    <SpeedRoundedIcon sx={{paddingLeft: 1}}/>
+                    <SpeedRoundedIcon sx={{paddingLeft: 1, height: 17}}/>
                 </Typography>
             </Stack>
-            <Slider max={maxSpeed} min={minSpeed} defaultValue={defaultSpeed} key={1} sx={{
+            <Slider size={"small"} max={maxSpeed} min={minSpeed} defaultValue={defaultSpeed} key={1} sx={{
                 marginLeft: 2,
-                marginBottom: 2,
+                marginBottom: 1,
                 width: width * 0.9,
                 color: speedSliderLineColor
             }} onChange={handleSpeedSlider} disabled={isBusy}/>

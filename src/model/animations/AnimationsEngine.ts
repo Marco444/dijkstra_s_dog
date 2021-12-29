@@ -16,6 +16,7 @@ export class AnimationType {
     static WallNode: AnimationType = new AnimationType(100, wallColor)
     static ShortesPathNode: AnimationType = new AnimationType(8000, shortestPathColor)
     static Unreachable: AnimationType = new AnimationType(1000, unreachableColor)
+    static EmptyNode: AnimationType = new AnimationType(100, emptyNodeColor)
 
     private readonly duration: number
     private readonly color: string
@@ -85,6 +86,10 @@ export class Animation {
 
 export function toggleWallAnimation(node: NodeBackEnd) {
     return [new Animation(AnimationType.WallNode, node), new Animation(Color.Wall, node)]
+}
+
+export function untoggleWallAnimation(node: NodeBackEnd) {
+    return [new Animation(AnimationType.EmptyNode, node), new Animation(Color.Empty, node)]
 }
 
 export function noSolutionAnimations(animations: Animation[]): Animation[] {

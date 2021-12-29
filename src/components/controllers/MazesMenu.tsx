@@ -25,7 +25,7 @@ interface MazesProps {
 
 export const MazesMenu = ({width, clicked, isBusy, mazeSelected}: MazesProps) => {
 
-    const buttonSx = {backgroundColor: mazesColor, width: width * 0.89}
+    const buttonSx = {backgroundColor: mazesColor, width: width * 0.75}
     const expandRef = useRef(null)
 
     const toggleAndClicked = (maze: Maze) => {
@@ -35,20 +35,19 @@ export const MazesMenu = ({width, clicked, isBusy, mazeSelected}: MazesProps) =>
     }
 
     return (
-        <Stack direction="column" width={width} >
+        <Stack direction="column" width={width} marginLeft={1}>
             <Accordion sx={{
                 backgroundColor: mazesDropDownColor,
                 color: fontColor,
                 marginBottom: 1,
-                marginTop: 1,
             }} disabled={isBusy} >
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon sx={{color: fontColor}} />}
                     aria-controls="panel1a-content"
                     id="panel1a-header"
                     sx={{marginBottom: 0}} ref={expandRef}>
-                    <Typography fontWeight='bold'>MAZE: </Typography>
-                    <Typography paddingLeft={1}>  {mazeSelected.name}</Typography>
+                    <Typography fontWeight='bold' fontSize={13}>MAZE: </Typography>
+                    <Typography paddingLeft={1} fontSize={13}>  {mazeSelected.name}</Typography>
                 </AccordionSummary>
                 <AccordionDetails sx={{marginBottom: 0}} >
                     <ButtonGroup
@@ -57,8 +56,9 @@ export const MazesMenu = ({width, clicked, isBusy, mazeSelected}: MazesProps) =>
                         variant="contained"
                         sx={{marginTop: 0}}>
                         <Button sx={buttonSx} onClick={() => toggleAndClicked(Maze.Prim)}> Prim </Button>
-                        <Button sx={buttonSx} onClick={() => toggleAndClicked(Maze.Kruskal)}> Kruskal </Button>
+                        <Button sx={buttonSx} onClick={() => toggleAndClicked(Maze.RecursiveDivison)}> Recursive</Button>
                         <Button sx={buttonSx} onClick={() => toggleAndClicked(Maze.Custom)}> Custom </Button>
+                        <Button sx={buttonSx} onClick={() => toggleAndClicked(Maze.Random)}> Random </Button>
                     </ButtonGroup>
                 </AccordionDetails>
             </Accordion>

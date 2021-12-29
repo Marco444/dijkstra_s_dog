@@ -66,7 +66,6 @@ function getAllNodes(grid: NodeBackEnd[][]): NodeBackEnd[] {
 // Backtracks from the finishNode to find the shortest path.
 // Only works when called *after* the dijkstra method above.
 // We just traverse from the back up until the start node
-
 export function getShortestPathAnimation(finishNode: NodeBackEnd): Animation[] {
     const animations: Animation[] = [];
     let currentNode = finishNode;

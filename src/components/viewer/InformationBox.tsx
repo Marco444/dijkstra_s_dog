@@ -4,7 +4,7 @@ import {
     AccordionDetails,
     AccordionSummary,
     Button,
-    ButtonGroup,
+    ButtonGroup, Link,
     Slide,
     Stack,
     Typography
@@ -22,7 +22,7 @@ interface InformationBoxProps {
     width: number
 }
 
-export const InformationBoxAlgorithm = ({algorithm, width}: InformationBoxProps ) => {
+export const InformationBoxAlgorithm = ({algorithm, width}: InformationBoxProps) => {
 
     const [show, setShow] = useState(false)
 
@@ -33,11 +33,12 @@ export const InformationBoxAlgorithm = ({algorithm, width}: InformationBoxProps 
     return (
 
         <Slide direction="up" in={show} mountOnEnter unmountOnExit>
-            <Stack  direction="column" sx={{backgroundColor: algorithmsDropDownColor}}>
-                <CloseIcon onClick={() => setShow(false)}
-                           sx={{color: fontColor, paddingTop: 2,  paddingLeft: width / 9.3, paddingBottom: 1
-                           }}> </CloseIcon>
-                <Typography sx={{ color: fontColor, padding: 3, paddingTop: 0,}}> {algorithm.text} </Typography>
+            <Stack direction='row' sx={{backgroundColor: algorithmsDropDownColor}}>
+                <Typography sx={{color: fontColor, padding: 3, paddingRight: 0}}> {algorithm.text} </Typography>
+                <Link href="#">
+                    <CloseIcon onClick={() => setShow(false)}
+                               sx={{color: fontColor, padding: 1, paddingLeft: 0}}> </CloseIcon>
+                </Link>
             </Stack>
         </Slide>
 

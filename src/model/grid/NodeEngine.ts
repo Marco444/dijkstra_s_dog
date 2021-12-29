@@ -1,25 +1,19 @@
-import {AnimationType, Animation} from "../animations/AnimationsEngine";
-import {im} from "mathjs";
 import {emptyNodeColor} from "../../components/colors";
 
 export class NodeType {
 
-    static Empty: NodeType = new NodeType(emptyNodeColor, () => NodeType.Wall, "")
-    static Start: NodeType = new NodeType(emptyNodeColor, () => NodeType.Start, "../../../public/dog.png")
-    static End: NodeType = new NodeType(emptyNodeColor, () => NodeType.End, "")
-    static Wall: NodeType = new NodeType("rgba(3,30,101,0.98)",() => NodeType.Wall, "")
-    static None: NodeType = new NodeType("", () => NodeType.None, "")
+    static Empty: NodeType = new NodeType(emptyNodeColor)
+    static Start: NodeType = new NodeType(emptyNodeColor)
+    static End: NodeType = new NodeType(emptyNodeColor)
+    static Wall: NodeType = new NodeType("rgba(3,30,101,0.98)")
+    static None: NodeType = new NodeType("")
 
     public color: string
-    public toggled: () => NodeType
-    public imgs: any
 
-    constructor(color: string, toggled: () => NodeType, imgSrc: string) {
+
+    constructor(color: string) {
         this.color = color;
-        this.toggled = toggled
-        this.imgs = new Array(2)
-        this.imgs[0] = new Image()
-        this.imgs[0].src = imgSrc
+
     }
 }
 
@@ -33,6 +27,8 @@ export class Point {
     }
 }
 
+
+
 export class NodeBackEnd {
 
     static None = new NodeBackEnd(NodeType.None, -1, -1)
@@ -44,14 +40,16 @@ export class NodeBackEnd {
     public coords: Point
     public isWall: boolean
     public color: string
+    public parent: string
 
     constructor(nodeType: NodeType, row: number, col: number) {
+        this.parent = ""
         this.nodeType = nodeType
         this.isVisited = false
         this.distance = Infinity
         this.previous =  NodeBackEnd.None
         this.coords = new Point(row, col)
-        this.isWall = false
+        this.isWall = nodeType === NodeType.Wall
         this.color = nodeType.color
     }
 
@@ -60,6 +58,36 @@ export class NodeBackEnd {
         return this
     }
 
+    visitedIs() {
+        return this.isVisited
+    }
+
+    visited() {
+        this.isVisited = true
+    }
+
+    unVisited() {
+        this.isVisited = false
+    }
+
 }
 
 
+export interface Adjacent {
+    edge: MazeNodeBackEnd,
+    vertex: MazeNodeBackEnd,
+}
+
+export class MazeNodeBackEnd extends NodeBackEnd {
+
+    static None = new MazeNodeBackEnd(NodeType.None, -1, -1)
+
+    public previousAdjacent: Adjacent
+
+
+    constructor(nodeType: NodeType, row: number, col: number) {
+        super(nodeType, row, col)
+        this.previousAdjacent = {edge: MazeNodeBackEnd.None, vertex: MazeNodeBackEnd.None}
+    }
+
+}

@@ -2,7 +2,7 @@ import {NodeBackEnd, Point} from "../grid/NodeEngine";
 import {Animation, toggleWallAnimation} from "../animations/AnimationsEngine";
 import {getAllAdjacent} from "../grid/GridEngine";
 
-/*export function getRandomMazeAnimations(grid: NodeBackEnd[][], start: Point, end: Point): Animation[] {
+export function getRandomMazeAnimations(grid: NodeBackEnd[][], start: Point, end: Point): Animation[] {
 
     const animations: Animation[] = []
     const possibleWalls = setPossibleWalls(grid)
@@ -11,7 +11,6 @@ import {getAllAdjacent} from "../grid/GridEngine";
     while (possibleWalls.length !== 0) {
         // @ts-ignore
         const [row, col] = possibleWalls.pop()
-
 
         if(validWall(row, col, grid)) {
             //We push the animation that it's a wall
@@ -79,4 +78,3 @@ function shuffle(array: number[][]) {
 
     return array;
 }
-*/

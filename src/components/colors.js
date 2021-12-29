@@ -1,6 +1,7 @@
 
 export const solveButtonColor = "#f38d8d"
 
+export const welcomeText = "rgba(217,223,246,0.99)";
 export const algorithmsDropDownColor = "rgba(123,152,248,0.98)";
 export const accordionColorAlgorithms = "rgba(122,147,227,0.93)"
 

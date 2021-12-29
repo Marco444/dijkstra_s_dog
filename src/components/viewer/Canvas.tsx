@@ -15,7 +15,7 @@ interface CanvasProps {
 export const Canvas = ({grid, squareSize, mouseDown, mouseEnter, mouseUp, mousePressed}: CanvasProps) => {
     return (
         <Box sx={{
-            margin: 5,
+            margin: 1,
             marginLeft: 2,
             outline: `1px solid rgba(0, 43, 162, 0.98)`,
         }}>

@@ -23,7 +23,7 @@ interface AlgorithmMenuProps {
 
 export const AlgorithmMenu = ({width, clicked, isBusy, defaultAlgorithm}: AlgorithmMenuProps) => {
 
-    const buttonSx = {backgroundColor: accordionColorAlgorithms, width: width * 0.89}
+    const buttonSx = {backgroundColor: accordionColorAlgorithms, width: width * 0.75}
     const [showMenu, setShowMenu] = useState(false)
     const expandRef = useRef(null)
 
@@ -45,8 +45,8 @@ export const AlgorithmMenu = ({width, clicked, isBusy, defaultAlgorithm}: Algori
                     aria-controls="panel1a-content"
                     id="panel1a-header"
                     sx={{marginBottom: 0}} ref={expandRef}>
-                    <Typography fontWeight='bold'>ALGORITHM: </Typography>
-                   <Typography paddingLeft={1}>  {defaultAlgorithm.name}</Typography>
+                    <Typography fontWeight='bold' fontSize={12}>ALGORITHM: </Typography>
+                   <Typography paddingLeft={1} fontSize={12}>  {defaultAlgorithm.name}</Typography>
                 </AccordionSummary>
                 <AccordionDetails sx={{marginBottom: 1}} >
                     <ButtonGroup
@@ -55,7 +55,7 @@ export const AlgorithmMenu = ({width, clicked, isBusy, defaultAlgorithm}: Algori
                         variant="contained"
                         sx={{marginTop: 0}}>
                         <Button sx={buttonSx} onClick={() => toggleAndClicked(Algorithm.Dijkstra)}> Dijkstra </Button>
-                        <Button sx={buttonSx} onClick={() => toggleAndClicked(Algorithm.Astar)}> A* </Button>
+                        <Button sx={buttonSx} onClick={() => toggleAndClicked(Algorithm.BidirectionalBFS)}> BFS* </Button>
                         <Button sx={buttonSx} onClick={() => toggleAndClicked(Algorithm.Bfs)}> BFS </Button>
                         <Button sx={buttonSx} onClick={() => toggleAndClicked(Algorithm.Dfs)}> DFS </Button>
                     </ButtonGroup>
