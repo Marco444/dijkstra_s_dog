@@ -1,6 +1,6 @@
 {
-  "homepage": "http://marco444.github.io/path_finder",
-  "name": "path_finder",
+  "homepage": "http://marco444.github.io/dijkstra-s-dog",
+  "name": "dijkstra-s-dog",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
