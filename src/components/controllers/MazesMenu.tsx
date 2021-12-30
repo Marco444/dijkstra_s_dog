@@ -4,15 +4,12 @@ import {
     AccordionSummary,
     Button,
     ButtonGroup,
-    Menu,
-    MenuItem,
     Stack,
     Typography
 } from "@mui/material";
-import React, {useRef, useState} from "react";
-import {accordionColorAlgorithms, algorithmsDropDownColor, fontColor, mazesColor, mazesDropDownColor} from "../colors";
+import React, {useRef} from "react";
+import {fontColor, mazesColor, mazesDropDownColor} from "../colors";
 import {Maze} from "../../model/mazes/MazesEngine";
-import {Algorithm} from "../../model/algorithms/outils/AlgorithmsEngine";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 
@@ -55,7 +52,6 @@ export const MazesMenu = ({width, clicked, isBusy, mazeSelected}: MazesProps) =>
                         aria-label="vertical contained button group"
                         variant="contained"
                         sx={{marginTop: 0}}>
-                        <Button sx={buttonSx} onClick={() => toggleAndClicked(Maze.Prim)}> Prim </Button>
                         <Button sx={buttonSx} onClick={() => toggleAndClicked(Maze.RecursiveDivison)}> Recursive</Button>
                         <Button sx={buttonSx} onClick={() => toggleAndClicked(Maze.Custom)}> Custom </Button>
                         <Button sx={buttonSx} onClick={() => toggleAndClicked(Maze.Random)}> Random </Button>

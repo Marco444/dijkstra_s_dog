@@ -36,7 +36,9 @@ const DfsText =
 
 const BidirectionalBFSText =
 `
-        
+   Bidirectional BFS works by running two BFS simultaneously, one starting from the dog and another starting
+   from the steak. It has the same limitations and BFS but in practise it's usually quite faster due to reducing
+   the total number of traversed vertices. 
 `
 
 export class Algorithm {

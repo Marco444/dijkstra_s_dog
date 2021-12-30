@@ -1,5 +1,5 @@
 import {Button, ButtonGroup} from "@mui/material";
-import {clearButtonColor, fontColor, solveButtonColor} from "../colors";
+import {clearButtonColor, fontColor} from "../colors";
 
 interface clearButtonProps {
     width: number,

@@ -3,32 +3,35 @@ import {Animation, AnimationType, noSolutionAnimations} from "../animations/Anim
 
 export function getDijkstraAnimations(grid: NodeBackEnd[][], start: NodeBackEnd, end: NodeBackEnd): Animation[] {
 
-   let animations: Animation[] = []
+    let animations: Animation[] = []
     start.distance = 0
-   const unvisitedNodes = getAllNodes(grid)
+    const unvisitedNodes = getAllNodes(grid)
+    //const unvisitedNodesHeap = new BinaryHeap((node: any) => node.distance)
+    //pushAllNodes(grid, unvisitedNodesHeap)
 
-   while(!!unvisitedNodes.length) {
-       sortNodesByDistance(unvisitedNodes)
-       // @ts-ignore
-       const closestNode: NodeBackEnd = unvisitedNodes.shift()
+    while (!!unvisitedNodes.length) {
+        sortNodesByDistance(unvisitedNodes)
 
-       //If the closest node is a wall then we continue with next closes
-       if(closestNode.isWall) continue
+        const closestNode: NodeBackEnd | undefined = unvisitedNodes.shift()
+        if(closestNode === undefined) return []
 
-       //If the closest node is at infinity, then we trapped so we stop.
-       if(closestNode.distance === Infinity) return animations.concat(...noSolutionAnimations(animations))
+        //If the closest node is a wall then we continue with next closes
+        if (closestNode.isWall) continue
 
-       closestNode.isVisited = true
-       animations.push(new Animation(AnimationType.ReachedNode, closestNode))
+        //If the closest node is at infinity, then we trapped so we stop.
+        if (closestNode.distance === Infinity) return animations.concat(...noSolutionAnimations(animations))
 
-       updateUnvisitedNeighbors(closestNode, grid);
+        closestNode.isVisited = true
+        animations.push(new Animation(AnimationType.ReachedNode, closestNode))
 
-       //If we reached the end then we really done!
-       if(closestNode.coords.row === end.coords.row && closestNode.coords.col === end.coords.col)
-           return animations.concat(...getShortestPathAnimation(end));
-   }
+        updateUnvisitedNeighbors(closestNode, grid);
 
-   return []
+        //If we reached the end then we really done!
+        if (closestNode.coords.row === end.coords.row && closestNode.coords.col === end.coords.col)
+            return animations.concat(...getShortestPathAnimation(end));
+    }
+
+    return []
 }
 
 function sortNodesByDistance(unvisitedNodes: NodeBackEnd[]) {
@@ -61,6 +64,12 @@ function getAllNodes(grid: NodeBackEnd[][]): NodeBackEnd[] {
         }
     }
     return nodes;
+}
+
+function pushAllNodes(grid: NodeBackEnd[][], heap: any): void {
+    for (let col = 0; col < grid.length; col++)
+        for (let row = 0; row < grid[0].length; row++)
+            heap.push(grid[row][col]);
 }
 
 // Backtracks from the finishNode to find the shortest path.

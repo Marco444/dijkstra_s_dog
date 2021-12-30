@@ -54,8 +54,8 @@ export const AlgorithmMenu = ({width, clicked, isBusy, defaultAlgorithm}: Algori
                         aria-label="vertical contained button group"
                         variant="contained"
                         sx={{marginTop: 0}}>
-                        <Button sx={buttonSx} onClick={() => toggleAndClicked(Algorithm.Dijkstra)}> Dijkstra </Button>
                         <Button sx={buttonSx} onClick={() => toggleAndClicked(Algorithm.BidirectionalBFS)}> BFS* </Button>
+                        <Button sx={buttonSx} onClick={() => toggleAndClicked(Algorithm.Dijkstra)}> Dijkstra </Button>
                         <Button sx={buttonSx} onClick={() => toggleAndClicked(Algorithm.Bfs)}> BFS </Button>
                         <Button sx={buttonSx} onClick={() => toggleAndClicked(Algorithm.Dfs)}> DFS </Button>
                     </ButtonGroup>

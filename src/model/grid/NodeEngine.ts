@@ -91,3 +91,19 @@ export class MazeNodeBackEnd extends NodeBackEnd {
     }
 
 }
+
+
+export class AStarNode extends NodeBackEnd{
+
+    public g: number
+    public f: number
+    public h: number
+    public closed: boolean
+
+    constructor(node: NodeBackEnd) {
+        super(node.nodeType, node.coords.row, node.coords.col);
+        this.g = this.f = this.h = 0
+        this.closed = false
+    }
+
+}
