@@ -2,7 +2,7 @@ import {NodeBackEnd, NodeType, Point} from "./NodeEngine";
 import {emptyNodeColor} from "../../components/colors";
 import {re} from "mathjs";
 
-import {AnimationType, Animation, Color, ImageAnimation} from "../animations/AnimationsEngine";
+import {AnimationType, Animation, Color} from "../animations/AnimationsEngine";
 
 export function initializeGrid(columns: number, rows: number, start: Point, end: Point) {
     const grid = []
@@ -29,8 +29,14 @@ export function updateGrid(oldGrid: readonly NodeBackEnd[][], columns: number, r
         for (let col = 0; col < columns; col++) {
            if(oldGrid[row][col].isWall)
                currentRow.push(new NodeBackEnd(NodeType.Wall, row, col));
-           else
-               currentRow.push(new NodeBackEnd(NodeType.Empty, row, col));
+           else if(oldGrid[row][col].nodeType === NodeType.Crumb)
+               currentRow.push(new NodeBackEnd(NodeType.Crumb, row, col));
+           else {
+               let newGuy = new NodeBackEnd(NodeType.Empty, row, col)
+               currentRow.push(newGuy);
+               if(oldGrid[row][col].elevation !== 0)
+                   newGuy.elevation = oldGrid[row][col].elevation
+           }
         }
         grid.push(currentRow);
     }

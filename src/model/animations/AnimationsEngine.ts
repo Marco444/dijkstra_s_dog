@@ -50,23 +50,6 @@ export class Color {
     }
 }
 
-export class ImageAnimation {
-
-    private type: NodeType
-    private node: NodeBackEnd
-
-    constructor(type: NodeType, node: NodeBackEnd) {
-        this.node = node
-        this.type = type
-    }
-
-    apply() {
-        // @ts-ignore
-        document.getElementById(`row${this.node.coords.row}col${this.node.coords.col}`).appendChild(this.type.imgs[0])
-    }
-
-}
-
 export class Animation {
 
     private type: AnimationType | Color

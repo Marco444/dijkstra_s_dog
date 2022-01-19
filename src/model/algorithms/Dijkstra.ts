@@ -41,7 +41,7 @@ function sortNodesByDistance(unvisitedNodes: NodeBackEnd[]) {
 function updateUnvisitedNeighbors(node: NodeBackEnd, grid: NodeBackEnd[][]) {
     const unvisitedNeighbors = getUnvisitedNeighbors(node, grid);
     for (const neighbor of unvisitedNeighbors) {
-        neighbor.distance = node.distance + 1;
+        neighbor.distance = node.distance + 1 + node.weight;
         neighbor.previous = node;
     }
 }
@@ -64,12 +64,6 @@ function getAllNodes(grid: NodeBackEnd[][]): NodeBackEnd[] {
         }
     }
     return nodes;
-}
-
-function pushAllNodes(grid: NodeBackEnd[][], heap: any): void {
-    for (let col = 0; col < grid.length; col++)
-        for (let row = 0; row < grid[0].length; row++)
-            heap.push(grid[row][col]);
 }
 
 // Backtracks from the finishNode to find the shortest path.

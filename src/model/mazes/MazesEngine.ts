@@ -36,6 +36,7 @@ export class Maze {
     static Custom = new Maze(() => [], "Custom", customMazeText)
     static Random = new Maze( getRandomMazeAnimations, "Random", randomMazeText)
     static RecursiveDivison = new Maze(getRecursiveDivision, "Recursive", recursiveDivisionText)
+    static Default = Maze.Custom;
 
     public readonly animations: getAnimationType
     public readonly name: string

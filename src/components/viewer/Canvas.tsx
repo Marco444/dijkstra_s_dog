@@ -23,7 +23,7 @@ export const Canvas = ({grid, squareSize, mouseDown, mouseEnter, mouseUp, mouseP
                 return (
                     <div key={rowIdx} style={{fontSize: 0}}>
                         {row.map((node, colIdx) => {
-                            const prop = {color: node.color, size: squareSize, row: node.coords.row,
+                            const prop = {color: node.getColor(), size: squareSize, row: node.coords.row,
                                           col: node.coords.col, mouseIsPressed: mousePressed,
                                           mouseEnter: mouseEnter, mouseUp: mouseUp, mouseDown: mouseDown,
                                           key: colIdx, nodeType: node.nodeType}

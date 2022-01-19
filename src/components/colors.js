@@ -8,6 +8,9 @@ export const accordionColorAlgorithms = "rgba(122,147,227,0.93)"
 export const mazesDropDownColor = "rgb(243,141,141)";
 export const mazesColor = "rgb(255,189,177)"
 
+export const weightedAlgorithmColor = "#ff2b86"
+export const negativeWeightCycleAlgorithmColor = "#42d5d5"
+
 export const informationBoxColor = "rgba(160,180,248,0.98)"
 
 export const speedSliderColor ="#ffbdb1"   ;

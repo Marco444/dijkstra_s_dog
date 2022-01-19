@@ -5,6 +5,7 @@ import {getAstarAnimations} from "../A*";
 import {getBfsAnimations} from "../BFS";
 import {getDfsAnimations} from "../DFS";
 import {getBidirectionalBFSAnimations} from "../BiderectionalBfs";
+import {getBellmanFordAnimations} from "../BellmanFord";
 
 type getAnimationType = (grid: NodeBackEnd[][], startNode: NodeBackEnd, endNode: NodeBackEnd) => Animation[]
 
@@ -18,6 +19,8 @@ const dijkstraText =
     `
 
 const AstarText = ``
+
+const BellmanFordText = ``
 
 const BfsText =
 `
@@ -43,21 +46,27 @@ const BidirectionalBFSText =
 
 export class Algorithm {
 
-    static Dijkstra = new Algorithm(getDijkstraAnimations, "Dijkstra", dijkstraText)
-    static Astar = new Algorithm(getAstarAnimations, "A*", AstarText)
-    static Bfs = new Algorithm(getBfsAnimations, "BFS", BfsText)
-    static Dfs = new Algorithm(getDfsAnimations, "DFS", DfsText)
-    static BidirectionalBFS = new Algorithm(getBidirectionalBFSAnimations, "BFS*", BidirectionalBFSText)
+    static Dijkstra = new Algorithm(getDijkstraAnimations, "Dijkstra", dijkstraText, true)
+    static Astar = new Algorithm(getAstarAnimations, "A*", AstarText, true)
+    static Bfs = new Algorithm(getBfsAnimations, "BFS", BfsText, false)
+    static Dfs = new Algorithm(getDfsAnimations, "DFS", DfsText, false)
+    static BidirectionalBFS = new Algorithm(getBidirectionalBFSAnimations, "BFS*", BidirectionalBFSText, false)
+    static BellmanFord = new Algorithm(getBellmanFordAnimations, "Bellman-Ford", BellmanFordText, true);
 
     public readonly getAnimations: getAnimationType
     public readonly name: string
     public readonly text: string
+    public readonly isWeighted: boolean
 
-    constructor(getAnimation: any, name: string, text: string) {
+
+    constructor(getAnimation: any, name: string, text: string, isWeighted: boolean) {
         this.getAnimations = getAnimation
         this.name = name
         this.text = text
+        this.isWeighted = isWeighted
     }
+
+
 
 }
 

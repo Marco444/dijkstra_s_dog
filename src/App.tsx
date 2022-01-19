@@ -15,6 +15,10 @@ import {ClearButton} from "./components/controllers/ClearButton";
 import {InformationBoxAlgorithm} from "./components/viewer/InformationBox";
 import {InformationBoxMaze} from "./components/viewer/InformationBoxMaze";
 import {randomIntFromInterval} from "./model/mazes/outils";
+import {WeightedMaze} from "./components/controllers/weightedMazeOption";
+import {NegativeWeights} from "./components/controllers/negativeWeightsOption";
+import getCrumbsAnimation from "./model/mazes/crumsAnimations";
+import getElevationAnimation from "./model/mazes/elevationAnimations";
 
 interface AppProps {
     stackWidth: number,
@@ -47,7 +51,7 @@ export const App = ({stackWidth, columns, rows, squareSize}: AppProps) => {
 
     //We keep track of our current algorithm and maze selected
     const [algorithm, setAlgorithm] = useState(Algorithm.Bfs)
-    const [maze, setMaze] = useState(Maze.Custom)
+    const [maze, setMaze] = useState(Maze.Default)
 
     //We keep the grid as a 2-d array of NodeBackEnd[]
     const [grid, setGrid]: [NodeBackEnd[][], any] = useState([])
@@ -118,9 +122,13 @@ export const App = ({stackWidth, columns, rows, squareSize}: AppProps) => {
         setAlgorithm(algorithm)
     }
 
+    /**
+     * function updates the grid with the necessary animations to create the desired maze,
+     * it doesn't clear the grid before doing so with the intent of providing the user the
+     * chance to see the mazes generated on top of each other
+     * **/
     const handleMazeSelected = (newMaze: Maze): void => {
-        if(newMaze !== Maze.Custom)
-            setIsBusy(true)
+        if(newMaze !== Maze.Default) setIsBusy(true)
 
         applyAnimations(newMaze.animations(grid, startCoordinate, endCoordinate), animationSpeed / 2)
         setMaze(newMaze)
@@ -132,6 +140,16 @@ export const App = ({stackWidth, columns, rows, squareSize}: AppProps) => {
 
     const handleCleanButton = (): void => {
         setGrid(clearGrid(grid, columns, rows, startCoordinate, endCoordinate))
+    }
+
+    const handleNegativeWeightsActivated = (): void => {
+        getCrumbsAnimation(grid, grid[startCoordinate.row][startCoordinate.col])
+        setGrid(updateGrid(grid, columns, rows, startCoordinate, endCoordinate))
+    }
+
+    const handleElevationActivated = (): void => {
+        getElevationAnimation(grid, grid[startCoordinate.row][startCoordinate.col])
+        setGrid(updateGrid(grid, columns, rows, startCoordinate, endCoordinate))
     }
 
     /////////////HANDLER FOR THE ANIMATIONS/////////////////////////
@@ -158,7 +176,7 @@ export const App = ({stackWidth, columns, rows, squareSize}: AppProps) => {
             <Stack direction="column" sx={{width: stackWidth, margin: 1}}>
 
                 <Stack direction={"row"}>
-                    <ClearButton width={stackWidth / 2} clicked={handleCleanButton.bind(this)} isBusy={isBusy}/>
+                    <ClearButton width={stackWidth / 2} clicked={handleCleanButton.bind(this)} isBusy={isBusy} />
                     <SolveButton width={stackWidth / 2} clicked={handleSolveButton.bind(this)} isBusy={isBusy}/>
                 </Stack>
 
@@ -175,7 +193,10 @@ export const App = ({stackWidth, columns, rows, squareSize}: AppProps) => {
 
                 <InformationBoxAlgorithm algorithm={algorithm} width={stackWidth}/>
                 <InformationBoxMaze width={stackWidth} maze={maze}/>
-
+                <WeightedMaze clicked={handleElevationActivated.bind(this)}
+                              algorithm={algorithm} maze={maze} />
+                <NegativeWeights clicked={handleNegativeWeightsActivated.bind(this)}
+                                 algorithm={algorithm} maze={maze} />
 
             </Stack>
 

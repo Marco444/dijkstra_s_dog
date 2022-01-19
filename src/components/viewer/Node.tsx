@@ -1,5 +1,6 @@
 import {ReactComponent as Dog} from "../imgs/dog.svg";
-import {ReactComponent as Steak} from "../imgs/steak-svgrepo-com.svg";
+import {ReactComponent as Steak} from "../imgs/steak.svg";
+import {ReactComponent as Crumb} from "../imgs/crumbs.svg";
 
 import {NodeType} from "../../model/grid/NodeEngine";
 
@@ -27,6 +28,7 @@ export const Node = ({color, size, mouseDown, mouseEnter, mouseUp, row, col, nod
         >
             { nodeType === NodeType.Start && <Dog width={size} height={size} /> }
             { nodeType === NodeType.End && <Steak width={size} height={size} /> }
+            { nodeType === NodeType.Crumb && <Crumb width={size} height={size}/> }
         </div>
     );
 }
