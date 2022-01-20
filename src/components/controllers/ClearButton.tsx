@@ -22,7 +22,7 @@ export const ClearButton = ({width, clicked, isBusy}: clearButtonProps) => {
                 width: width
             }}
                     onClick={clicked} disabled={isBusy}>
-               CLEAR WALLS
+               CLEAR
             </Button>
 
         </ButtonGroup>

@@ -26,10 +26,8 @@ export class AnimationType {
         this.color = color
     }
 
-    apply(node: any) {
-        node.animate(
-           {backgroundColor: [this.color, emptyNodeColor], scale: [0.3, 1]}
-        , this.duration)
+    apply(node: any, fromColor: string) {
+        node.animate({backgroundColor: [this.color, fromColor], scale: [0.6, 1]}, this.duration)
     }
 }
 
@@ -45,7 +43,7 @@ export class Color {
         this.color = color
     }
 
-    apply(node: any) {
+    apply(node: any, fromColor: string) {
         node.style.background = this.color
     }
 }
@@ -62,7 +60,7 @@ export class Animation {
 
     apply() {
         // @ts-ignore
-        this.type.apply(document.getElementById(`row${this.node.coords.row}col${this.node.coords.col}`))
+        this.type.apply(document.getElementById(`row${this.node.coords.row}col${this.node.coords.col}`), this.node.getColor())
     }
 
 }

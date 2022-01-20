@@ -3,6 +3,15 @@ import {Animation, AnimationType, noSolutionAnimations} from "../animations/Anim
 import {getAdjacent} from "../grid/GridEngine";
 import {getShortestPathAnimation} from "./Dijkstra";
 
+
+
+export const BidirectionalBFSText =
+    `
+   Bidirectional BFS works by running two BFS simultaneously, one starting from the dog and another starting
+   from the steak. It has the same limitations and BFS but in practise it's usually quite faster due to reducing
+   the total number of traversed vertices. 
+`
+
 /* Returns a set of animations of the nodes traversed and the shortest path between start and end vertices
 *  using biderectional bfs */
 export function getBidirectionalBFSAnimations(grid: NodeBackEnd[][], start: NodeBackEnd, end: NodeBackEnd): Animation[] {

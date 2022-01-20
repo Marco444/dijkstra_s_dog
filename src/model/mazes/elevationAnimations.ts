@@ -1,6 +1,6 @@
 import {NodeBackEnd, NodeType} from "../grid/NodeEngine";
 import {Animation} from "../animations/AnimationsEngine";
-import {randomIntFromInterval} from "./outils";
+import {randomIntFromInterval} from "../../outils"
 import {getAdjacent} from "../grid/GridEngine";
 
 const MAX_ELEVATION = 5;

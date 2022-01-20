@@ -5,6 +5,13 @@ import {getShortestPathAnimation} from "./Dijkstra";
 import {Stack} from "datastructures-js";
 require('algorithms/data_structures');
 
+export const DfsText =
+    `
+    Depth First Search (DFS) works analogously to BFS but traverses in order of the deepest vertex possible at every
+    step, before reaching it and backtracking. Like BFS it works with UN-WEIGHTED graphs, and traverses the whole
+    graph in worst case so its complexity is O(V + E). Contrary to BFS, it DOESN'T GUARANTEE shortest path
+`
+
 export function getDfsAnimations(grid: NodeBackEnd[][], start: NodeBackEnd, end: NodeBackEnd): Animation[] {
 
     console.log('dfs called')

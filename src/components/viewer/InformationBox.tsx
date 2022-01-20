@@ -13,7 +13,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import {Maze} from "../../model/mazes/MazesEngine";
 import React, {useEffect, useRef, useState} from "react";
 
-import {Algorithm} from "../../model/algorithms/outils/AlgorithmsEngine";
+import {Algorithm} from "../../model/algorithms/AlgorithmsEngine";
 import CloseIcon from "@mui/icons-material/Close";
 
 interface InformationBoxProps {

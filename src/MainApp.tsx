@@ -3,13 +3,9 @@ import {App} from "./App"
 import {WelcomeGuide} from "./components/presentation/WelcomeGuide";
 import {useState} from "react";
 import {Tutorial} from "./components/presentation/tutorial/Tutorial";
+import {closestOddNumber} from "./outils";
 
 export const MainApp = () => {
-
-
-    const closestOddNumber = (num: number): number => {
-        return Math.round(num) % 2 === 0 ? Math.round(num) + 1 : Math.round(num)
-    }
 
     //Screen size and definiton
     const {height, width} = useWindowSize();
@@ -26,10 +22,8 @@ export const MainApp = () => {
     const columns = closestOddNumber(width * 0.665 / squareSize)
     const rows = closestOddNumber(height * 0.8 / squareSize)
 
-
     return (
         <>
-
             <WelcomeGuide startTutorial={() => {
                 setStartTutorial(true);
                 showWelcome(false)

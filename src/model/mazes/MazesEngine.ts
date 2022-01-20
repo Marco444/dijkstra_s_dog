@@ -1,7 +1,6 @@
 import {NodeBackEnd, Point} from "../grid/NodeEngine";
 import {Animation} from "../animations/AnimationsEngine";
 import {getRecursiveDivision} from "./RecursiveDivision";
-import {getPrimAnimations2} from "./Prim2";
 import {getRandomMazeAnimations} from "./random";
 
 type getAnimationType = (grid: NodeBackEnd[][], start: Point, end: Point) => Animation[]
@@ -32,7 +31,6 @@ const randomMazeText =
       that passes through all the walls) `
 
 export class Maze {
-    static Prim = new Maze(getPrimAnimations2, "Prim", primText)
     static Custom = new Maze(() => [], "Custom", customMazeText)
     static Random = new Maze( getRandomMazeAnimations, "Random", randomMazeText)
     static RecursiveDivison = new Maze(getRecursiveDivision, "Recursive", recursiveDivisionText)

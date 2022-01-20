@@ -3,6 +3,15 @@ import {Animation, AnimationType, noSolutionAnimations} from "../animations/Anim
 import {getShortestPathAnimation} from "./Dijkstra";
 import {getAdjacent} from "../grid/GridEngine";
 
+export const BfsText =
+    `
+    Breadth First Search (BFS) is set to initialise at a vertex and then moves on to traverse all the nodes
+    with the current height before traversing all the others with next depth level. Because in the worst case
+    it traverses the whole graph, its complexity is O(V + E) where V are the vertices and E are the edges 
+    of the graph. It works with UN-WEIGHTED graphs
+`
+
+
 export function getBfsAnimations(grid: NodeBackEnd[][], start: NodeBackEnd, end: NodeBackEnd): Animation[] {
 
     const animations: Animation[] = []

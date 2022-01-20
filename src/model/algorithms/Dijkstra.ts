@@ -1,6 +1,16 @@
 import {NodeBackEnd, NodeType, Point} from "../grid/NodeEngine";
 import {Animation, AnimationType, noSolutionAnimations} from "../animations/AnimationsEngine";
 
+
+export const dijkstraText =
+    `
+     Dijkstra's picks the unvisited vertex with the lowest distance (closest vertex), calculates
+     the distance through it to each unvisited neighbor, and updates the 
+     neighbor's distance if smaller. It repeats this until it finds the end-node.
+    Its complexity varies upon the way we store the closest nodes, being the best one
+    O(lgV*V + E) where V are the vertices and E the edges. It works with WEIGHTED graphs
+    `
+
 export function getDijkstraAnimations(grid: NodeBackEnd[][], start: NodeBackEnd, end: NodeBackEnd): Animation[] {
 
     let animations: Animation[] = []
@@ -41,7 +51,7 @@ function sortNodesByDistance(unvisitedNodes: NodeBackEnd[]) {
 function updateUnvisitedNeighbors(node: NodeBackEnd, grid: NodeBackEnd[][]) {
     const unvisitedNeighbors = getUnvisitedNeighbors(node, grid);
     for (const neighbor of unvisitedNeighbors) {
-        neighbor.distance = node.distance + 1 + node.weight;
+        neighbor.distance = node.distance + 1 + node.elevation;
         neighbor.previous = node;
     }
 }
@@ -58,11 +68,11 @@ function getUnvisitedNeighbors(node: NodeBackEnd, grid: NodeBackEnd[][]) {
 
 function getAllNodes(grid: NodeBackEnd[][]): NodeBackEnd[] {
     const nodes = [];
-    for (const row of grid) {
-        for (const node of row) {
+
+    for (const row of grid)
+        for (const node of row)
             nodes.push(node);
-        }
-    }
+
     return nodes;
 }
 

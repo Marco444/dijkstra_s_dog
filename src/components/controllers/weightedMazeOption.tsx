@@ -2,21 +2,20 @@ import React, {useEffect, useState} from "react";
 import {Button, Link, Slide, Stack, Typography} from "@mui/material";
 import {fontColor, mazesDropDownColor, weightedAlgorithmColor} from "../colors";
 import CloseIcon from "@mui/icons-material/Close";
-import {Algorithm} from "../../model/algorithms/outils/AlgorithmsEngine";
+import {Algorithm} from "../../model/algorithms/AlgorithmsEngine";
 import {Maze} from "../../model/mazes/MazesEngine";
 
 interface WeightedMazeOption {
     clicked: any,
     algorithm: Algorithm,
-    maze: Maze
 }
 
-export const WeightedMaze = ({clicked, algorithm, maze}: WeightedMazeOption) => {
+export const WeightedMaze = ({clicked, algorithm}: WeightedMazeOption) => {
     const [show, setShow] = useState(false)
 
     useEffect(() => {
-        setShow(algorithm.isWeighted && maze !== Maze.Default)
-    }, [algorithm, maze])
+        setShow(algorithm.isWeighted)
+    }, [algorithm])
 
     return (
 

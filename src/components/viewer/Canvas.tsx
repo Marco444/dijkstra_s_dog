@@ -10,14 +10,18 @@ interface CanvasProps {
     mouseEnter: (row: number, col: number) => any
     mouseUp: (row: number, col: number) => any
     mousePressed: () => any
+    canvasHeight: number
+    canvasWidth: number
 }
 
-export const Canvas = ({grid, squareSize, mouseDown, mouseEnter, mouseUp, mousePressed}: CanvasProps) => {
+export const Canvas = ({grid, squareSize, mouseDown, mouseEnter, mouseUp, mousePressed, canvasWidth, canvasHeight}: CanvasProps) => {
     return (
         <Box sx={{
             margin: 1,
             marginLeft: 2,
             outline: `1px solid rgba(0, 43, 162, 0.98)`,
+            width: canvasWidth,
+            height: canvasHeight
         }}>
             {grid.map((row, rowIdx) => {
                 return (

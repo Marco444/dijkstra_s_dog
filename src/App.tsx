@@ -4,7 +4,7 @@ import {AlgorithmMenu} from "./components/controllers/AlgorithmMenu";
 import {Canvas} from "./components/viewer/Canvas";
 import {MazesMenu} from "./components/controllers/MazesMenu";
 import {useEffect, useState} from "react";
-import {Algorithm} from "./model/algorithms/outils/AlgorithmsEngine";
+import {Algorithm} from "./model/algorithms/AlgorithmsEngine";
 import {Animation, AnimationType} from "./model/animations/AnimationsEngine";
 import {Maze} from "./model/mazes/MazesEngine";
 import {clearGrid, initializeGrid, removeStartEndCoordinate, updateGrid} from "./model/grid/GridEngine";
@@ -14,11 +14,10 @@ import {getWallToggleAnimation} from "./model/animations/toggleWallAnimation";
 import {ClearButton} from "./components/controllers/ClearButton";
 import {InformationBoxAlgorithm} from "./components/viewer/InformationBox";
 import {InformationBoxMaze} from "./components/viewer/InformationBoxMaze";
-import {randomIntFromInterval} from "./model/mazes/outils";
 import {WeightedMaze} from "./components/controllers/weightedMazeOption";
-import {NegativeWeights} from "./components/controllers/negativeWeightsOption";
-import getCrumbsAnimation from "./model/mazes/crumsAnimations";
 import getElevationAnimation from "./model/mazes/elevationAnimations";
+import {UnweightedAlgorithm} from "./components/viewer/unweightedAlgorithm";
+import {randomIntFromInterval} from "./outils";
 
 interface AppProps {
     stackWidth: number,
@@ -130,7 +129,7 @@ export const App = ({stackWidth, columns, rows, squareSize}: AppProps) => {
     const handleMazeSelected = (newMaze: Maze): void => {
         if(newMaze !== Maze.Default) setIsBusy(true)
 
-        applyAnimations(newMaze.animations(grid, startCoordinate, endCoordinate), animationSpeed / 2)
+        applyAnimations(newMaze.animations(grid, startCoordinate, endCoordinate), animationSpeed / 50)
         setMaze(newMaze)
     }
 
@@ -140,11 +139,6 @@ export const App = ({stackWidth, columns, rows, squareSize}: AppProps) => {
 
     const handleCleanButton = (): void => {
         setGrid(clearGrid(grid, columns, rows, startCoordinate, endCoordinate))
-    }
-
-    const handleNegativeWeightsActivated = (): void => {
-        getCrumbsAnimation(grid, grid[startCoordinate.row][startCoordinate.col])
-        setGrid(updateGrid(grid, columns, rows, startCoordinate, endCoordinate))
     }
 
     const handleElevationActivated = (): void => {
@@ -193,16 +187,16 @@ export const App = ({stackWidth, columns, rows, squareSize}: AppProps) => {
 
                 <InformationBoxAlgorithm algorithm={algorithm} width={stackWidth}/>
                 <InformationBoxMaze width={stackWidth} maze={maze}/>
+                <UnweightedAlgorithm algorithm={algorithm} width={stackWidth} />
                 <WeightedMaze clicked={handleElevationActivated.bind(this)}
-                              algorithm={algorithm} maze={maze} />
-                <NegativeWeights clicked={handleNegativeWeightsActivated.bind(this)}
-                                 algorithm={algorithm} maze={maze} />
+                              algorithm={algorithm}  />
 
             </Stack>
 
             <Canvas grid={grid} squareSize={squareSize} mouseUp={handleMouseUp.bind(this)}
                     mouseDown={handleMouseDown.bind(this)} mouseEnter={handleMouseEnter.bind(this)}
-                    mousePressed={() => setMousePressed(prevState => !prevState)}/>
+                    mousePressed={() => setMousePressed(prevState => !prevState)}
+                    canvasHeight={rows * squareSize} canvasWidth={columns * squareSize}/>
         </Stack>
     );
 }

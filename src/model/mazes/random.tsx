@@ -1,6 +1,7 @@
 import {NodeBackEnd, Point} from "../grid/NodeEngine";
 import {Animation, toggleWallAnimation} from "../animations/AnimationsEngine";
 import {getAllAdjacent} from "../grid/GridEngine";
+import {shuffle} from "../../outils";
 
 export function getRandomMazeAnimations(grid: NodeBackEnd[][], start: Point, end: Point): Animation[] {
 
@@ -29,7 +30,6 @@ export function getRandomMazeAnimations(grid: NodeBackEnd[][], start: Point, end
 //that we are putting a wall in the middle of empty nodes (new tree), or
 //next to a wall that isn't touching another one (joining two trees)
 function validWall(row: number, col: number, grid: NodeBackEnd[][]): boolean {
-    const ans = false
     let adjacents = 0
 
     // @ts-ignore
@@ -59,22 +59,4 @@ function setPossibleWalls(grid: NodeBackEnd[][]): number[][] {
     // animations.map( animation => animation.apply())
 
     return nodes
-}
-
-function shuffle(array: number[][]) {
-    let currentIndex = array.length,  randomIndex;
-
-    // While there remain elements to shuffle...
-    while (currentIndex !== 0) {
-
-        // Pick a remaining element...
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex--;
-
-        // And swap it with the current element.
-        [array[currentIndex], array[randomIndex]] = [
-            array[randomIndex], array[currentIndex]];
-    }
-
-    return array;
 }

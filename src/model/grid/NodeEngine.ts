@@ -39,7 +39,6 @@ export class NodeBackEnd {
     public isWall: boolean
     public color: string
     public parent: string
-    public weight: number
     public elevation: number
 
     constructor(nodeType: NodeType, row: number, col: number) {
@@ -51,7 +50,6 @@ export class NodeBackEnd {
         this.coords = new Point(row, col)
         this.isWall = nodeType === NodeType.Wall
         this.color = nodeType.color
-        this.weight = 0
         this.elevation = 0
     }
 
@@ -78,39 +76,4 @@ export class NodeBackEnd {
         else opacity = 0.70 / this.elevation;
         return `rgba(3,30,101,${opacity})`
     }
-}
-
-export interface Adjacent {
-    edge: MazeNodeBackEnd,
-    vertex: MazeNodeBackEnd,
-}
-
-export class MazeNodeBackEnd extends NodeBackEnd {
-
-    static None = new MazeNodeBackEnd(NodeType.None, -1, -1)
-
-    public previousAdjacent: Adjacent
-
-
-    constructor(nodeType: NodeType, row: number, col: number) {
-        super(nodeType, row, col)
-        this.previousAdjacent = {edge: MazeNodeBackEnd.None, vertex: MazeNodeBackEnd.None}
-    }
-
-}
-
-
-export class AStarNode extends NodeBackEnd {
-
-    public g: number
-    public f: number
-    public h: number
-    public closed: boolean
-
-    constructor(node: NodeBackEnd) {
-        super(node.nodeType, node.coords.row, node.coords.col);
-        this.g = this.f = this.h = 0
-        this.closed = false
-    }
-
 }

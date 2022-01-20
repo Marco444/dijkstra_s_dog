@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import React, {useRef, useState} from "react";
 import {accordionColorAlgorithms, algorithmsDropDownColor, fontColor} from "../colors";
-import {Algorithm} from "../../model/algorithms/outils/AlgorithmsEngine";
+import {Algorithm} from "../../model/algorithms/AlgorithmsEngine";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 interface AlgorithmMenuProps {
