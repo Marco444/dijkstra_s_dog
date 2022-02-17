@@ -3,9 +3,10 @@
 This project was designed to visualise some sorting algorithms in an intuitive and interactive way. It was built with React js and MUI for icons and controllers. 
 
 ### Project Structure
+
 ```
 src
-├── App.tsx 
+├── App.tsx
 ├── MainApp.tsx
 ├── components
 │   ├── colors.js
@@ -14,11 +15,12 @@ src
 │   │   ├── ClearButton.tsx
 │   │   ├── MazesMenu.tsx
 │   │   ├── SolveButton.tsx
-│   │   └── SpeedSlider.tsx
+│   │   ├── SpeedSlider.tsx
+│   │   └── weightedMazeOption.tsx
 │   ├── imgs
+│   │   ├── crumbs.svg
 │   │   ├── dog.svg
-│   │   ├── paw.svg
-│   │   └── steak-svgrepo-com.svg
+│   │   └── steak.svg
 │   ├── presentation
 │   │   ├── WelcomeGuide.tsx
 │   │   └── tutorial
@@ -31,19 +33,16 @@ src
 │       ├── Canvas.tsx
 │       ├── InformationBox.tsx
 │       ├── InformationBoxMaze.tsx
-│       └── Node.tsx
+│       ├── Node.tsx
+│       └── unweightedAlgorithm.tsx
 ├── index.js
 ├── model
 │   ├── algorithms
-│   │   ├── A*.ts
+│   │   ├── AlgorithmsEngine.ts
 │   │   ├── BFS.ts
 │   │   ├── BiderectionalBfs.ts
 │   │   ├── DFS.ts
-│   │   ├── Dijkstra.ts
-│   │   └── outils
-│   │       ├── AlgorithmsEngine.ts
-│   │       ├── BinaryHeap.js
-│   │       └── PriorityQueue.js
+│   │   └── Dijkstra.ts
 │   ├── animations
 │   │   ├── AnimationsEngine.css
 │   │   ├── AnimationsEngine.ts
@@ -54,9 +53,9 @@ src
 │   │   └── NodeEngine.ts
 │   └── mazes
 │       ├── MazesEngine.ts
-│       ├── Prim2.ts
 │       ├── RecursiveDivision.ts
-│       ├── outils.ts
+│       ├── elevationAnimations.ts
 │       └── random.tsx
+├── outils.ts
 └── react-app-env.d.ts
 ```
