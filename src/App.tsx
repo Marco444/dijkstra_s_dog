@@ -23,6 +23,7 @@ interface AppProps {
     stackWidth: number,
     columns: number
     rows: number
+
     squareSize: number
 }
 
