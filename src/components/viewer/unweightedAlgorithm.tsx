@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {Link, Slide, Stack, Typography} from "@mui/material";
 import {algorithmsDropDownColor, fontColor, unweightedColor} from "../colors";
 import CloseIcon from "@mui/icons-material/Close";
-import {Algorithm} from "../../model/algorithms/AlgorithmsEngine";
+import {Algorithm} from "../../model/algorithms/outils/AlgorithmsEngine";
 interface UnweightedAlgorithmProps {
     algorithm: Algorithm,
     width: number

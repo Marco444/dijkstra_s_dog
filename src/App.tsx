@@ -4,7 +4,6 @@ import {AlgorithmMenu} from "./components/controllers/AlgorithmMenu";
 import {Canvas} from "./components/viewer/Canvas";
 import {MazesMenu} from "./components/controllers/MazesMenu";
 import {useEffect, useState} from "react";
-import {Algorithm} from "./model/algorithms/AlgorithmsEngine";
 import {Animation, AnimationType} from "./model/animations/AnimationsEngine";
 import {Maze} from "./model/mazes/MazesEngine";
 import {clearGrid, initializeGrid, removeStartEndCoordinate, updateGrid} from "./model/grid/GridEngine";
@@ -17,7 +16,8 @@ import {InformationBoxMaze} from "./components/viewer/InformationBoxMaze";
 import {WeightedMaze} from "./components/controllers/weightedMazeOption";
 import getElevationAnimation from "./model/mazes/elevationAnimations";
 import {UnweightedAlgorithm} from "./components/viewer/unweightedAlgorithm";
-import {randomIntFromInterval} from "./outils";
+import {Algorithm} from "./model/algorithms/outils/AlgorithmsEngine";
+import {randomIntFromInterval} from "./model/mazes/outils";
 
 interface AppProps {
     stackWidth: number,

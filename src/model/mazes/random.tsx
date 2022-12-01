@@ -1,7 +1,7 @@
 import {NodeBackEnd, Point} from "../grid/NodeEngine";
 import {Animation, toggleWallAnimation} from "../animations/AnimationsEngine";
 import {getAllAdjacent} from "../grid/GridEngine";
-import {shuffle} from "../../outils";
+import {shuffle} from "./outils";
 
 export function getRandomMazeAnimations(grid: NodeBackEnd[][], start: Point, end: Point): Animation[] {
 

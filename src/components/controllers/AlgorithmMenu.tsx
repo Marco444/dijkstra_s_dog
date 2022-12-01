@@ -11,8 +11,8 @@ import {
 } from "@mui/material";
 import React, {useRef, useState} from "react";
 import {accordionColorAlgorithms, algorithmsDropDownColor, fontColor} from "../colors";
-import {Algorithm} from "../../model/algorithms/AlgorithmsEngine";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import {Algorithm} from "../../model/algorithms/outils/AlgorithmsEngine";
 
 interface AlgorithmMenuProps {
     width: number

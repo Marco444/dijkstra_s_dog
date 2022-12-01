@@ -2,7 +2,7 @@
   "homepage": "http://marco444.github.io/dijkstra-s-dog",
   "name": "dijkstra-s-dog",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
@@ -21,7 +21,7 @@
     "mathjs": "^10.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3",
+    "react-scripts": "5.0.1",
     "react-use": "^17.3.1",
     "typescript": "^4.5.4",
     "web-vitals": "^1.1.2"

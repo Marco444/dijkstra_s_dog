@@ -2,8 +2,8 @@ import React, {useEffect, useState} from "react";
 import {Button, Link, Slide, Stack, Typography} from "@mui/material";
 import {fontColor, mazesDropDownColor, weightedAlgorithmColor} from "../colors";
 import CloseIcon from "@mui/icons-material/Close";
-import {Algorithm} from "../../model/algorithms/AlgorithmsEngine";
 import {Maze} from "../../model/mazes/MazesEngine";
+import {Algorithm} from "../../model/algorithms/outils/AlgorithmsEngine";
 
 interface WeightedMazeOption {
     clicked: any,

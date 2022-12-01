@@ -3,8 +3,10 @@ import {App} from "./App"
 import {WelcomeGuide} from "./components/presentation/WelcomeGuide";
 import {useState} from "react";
 import {Tutorial} from "./components/presentation/tutorial/Tutorial";
-import {closestOddNumber} from "./outils";
 
+function closestOddNumber(num: number) {
+    return Math.round(num) % 2 == 0 ? Math.round(num) + 1 : Math.round(num)
+}
 export const MainApp = () => {
 
     //Screen size and definiton
