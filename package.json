@@ -17,7 +17,6 @@
     "@types/react-dom": "^17.0.11",
     "algorithms": "^0.10.0",
     "datastructures-js": "^10.1.1",
-    "fibonacci-heap": "^0.0.4",
     "mathjs": "^10.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
