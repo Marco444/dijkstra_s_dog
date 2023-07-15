@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "routes": [
+    {
+      "src": "/(.*).js",
+      "headers": { "cache-control": "s-maxage=31536000,immutable" },
+      "continue": true
+    },
+    {
+      "src": "/(.*).json",
+      "headers": { "cache-control": "s-maxage=31536000,immutable" },
+      "continue": true
+    },
+    {
+      "src": "/.*",
+      "dest": "/index.html"
+    }
+  ]
+}
